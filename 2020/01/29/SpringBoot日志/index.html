@@ -94,7 +94,7 @@
       
 
       
-      <h1 id="SpringBoot日志"><a href="#SpringBoot日志" class="headerlink" title="SpringBoot日志"></a>SpringBoot日志</h1><h2 id="1、日志框架"><a href="#1、日志框架" class="headerlink" title="1、日志框架"></a>1、日志框架</h2><p><img src="/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/.%5CSpringBoot%E6%97%A5%E5%BF%97%5Cslf4j-logo.jpg" alt></p>
+      <h1 id="SpringBoot日志"><a href="#SpringBoot日志" class="headerlink" title="SpringBoot日志"></a>SpringBoot日志</h1><h2 id="1、日志框架"><a href="#1、日志框架" class="headerlink" title="1、日志框架"></a>1、日志框架</h2><p><img src="/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/slf4j-logo.jpg" alt></p>
 <p>市面上的日志框架：</p>
 <p>JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j…</p>
 <a id="more"></a>
@@ -121,14 +121,14 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    Logger logger = LoggerFactory.getLogger(HelloWorld<span class="class">.<span class="keyword">class</span>)</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    logger.info(<span class="string">"Hello World"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 
 <p> SLF4J关系图</p>
-<p><img src="/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/.%5CSpringBoot%E6%97%A5%E5%BF%97%5Cslf4j.png" alt></p>
+<p><img src="/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/slf4j.png" alt></p>
 <p>Logback：应用程序直接调用SLF4J抽象层的方法，实现的是Logback。导入slf4j和logback包</p>
 <p>Log4j：应用程序直接调用SLF4J抽象层的方法，实现的是log4j，由于slf4j后发行，所以如果使用log4j，则需要加入slf4j-log4j的适配包。导入slf4j和slf4j-log412和log4j包</p>
 <p>java.util.logging：应用程序直接调用SLF4j抽象层的方法，实现的是java.util.logging。需要导入slf4j和slf4j-jdk14包 </p>
 <p>说明：每一个日志的实现框架都有自己的配置文件，使用slf4j以后，<strong>配置文件还是做成日志实现框架的配置文件</strong> (最终还是使用实现框架的配置文件)</p>
 <h2 id="2、遗留问题"><a href="#2、遗留问题" class="headerlink" title="2、遗留问题"></a>2、遗留问题</h2><p>场景：开发某系统采用的是slf4j+logback：Spring（commons-logging）、Hibernate（jBoss-logging）、Mybatis、xxx</p>
 <p>统一日志记录，别的框架和我一起统一使用slf4j进行输出</p>
-<p><img src="/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/.%5CSpringBoot%E6%97%A5%E5%BF%97%5Clegacy.png" alt></p>
+<p><img src="/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/legacy.png" alt></p>
 <p><strong>思路：先把Spring框架中的Commons logging包先排除掉，再用jcl-over-slf4j包来替换</strong></p>
 <p>1、将系统中其他日志框架先排除出去；</p>
 <p>2、用中间包来替代原有的日志框架；</p>
@@ -139,7 +139,7 @@
 <p>在spring-boot-starter中又依赖了spring-boot-starter-logging</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">      &lt;artifactId&gt;spring-boot-starter-logging&lt;/artifactId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">      &lt;version&gt;2.2.2.RELEASE&lt;/version&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">      &lt;scope&gt;compile&lt;/scope&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    &lt;/dependency&gt;</span></pre></td></tr></table></figure>
 
-<p><img src="/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/.%5CSpringBoot%E6%97%A5%E5%BF%97%5Clogging-start.png" alt></p>
+<p><img src="/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/logging-start.png" alt></p>
 <p>总结：</p>
 <p>1、Springboot底层也采用slf4j+logback</p>
 <p>2、SpringBoot也将其他日志都替换为slf4j</p>
@@ -225,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/" data-id="ck60vzsmr000368v4b88deci8"
+      <a data-url="http://yoursite.com/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/" data-id="ck60w4qv00003vkv46wth0qdb"
         class="article-share-link">分享</a>
       
     </footer>
