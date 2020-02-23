@@ -62,6 +62,170 @@
     
     
     
+    <article id="post-SpringBoot部署" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/"
+    >&#39;SpringBoot部署&#39;</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/" class="article-date">
+  <time datetime="2020-02-23T02:33:23.000Z" itemprop="datePublished">2020-02-23</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="SpringBoot部署"><a href="#SpringBoot部署" class="headerlink" title="SpringBoot部署"></a>SpringBoot部署</h2><blockquote>
+<p>把SpringBoot项目打包为镜像，通过docker来创建容器并运行</p>
+</blockquote>
+<p><img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/1.png" alt></p>
+      
+      <a class="article-more-link" href="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/">阅读更多...</a>
+      
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/" data-id="ck6yiyo3h0002kgv49k7x1ipd"
+        class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Spring-Data-JPA" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/02/Spring-Data-JPA/"
+    >Spring Data JPA</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/02/Spring-Data-JPA/" class="article-date">
+  <time datetime="2020-02-02T03:13:33.000Z" itemprop="datePublished">2020-02-02</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="Jpa"><a href="#Jpa" class="headerlink" title="Jpa"></a>Jpa</h2><blockquote>
+<p>JPA是一种规范，需要由具体的实现，体现了面向接口的特性。</p>
+</blockquote>
+<h3 id="1-JPA是什么"><a href="#1-JPA是什么" class="headerlink" title="1.JPA是什么"></a>1.JPA是什么</h3><ol>
+<li>Java Persistence API：用于对象持久化的API</li>
+<li>Java EE 5.0 平台标准的ORM规范，使得应用程序徐以统一的方式访问持久层</li>
+</ol>
+<p><img src="/2020/02/02/Spring-Data-JPA/.%5CSpring-Data-JPA%5C1217603-20190627093955399-1814244419.png" alt></p>
+<h3 id="2-JPA和Hibernate的关系"><a href="#2-JPA和Hibernate的关系" class="headerlink" title="2.JPA和Hibernate的关系"></a>2.JPA和Hibernate的关系</h3><ol>
+<li>JPA是Hibernate的一个抽象（就像JDBC和JDBC驱动的关系）</li>
+<li>JPA是规范：JPA本质上就是一种ORM规范，不是ORM框架。这因为JPA并未提供ORM实现，他只是制定了一些规范，提供了一些编程的API接口，但具体的实现是由ORM厂商实现的。</li>
+<li>Hibernate是实现：Hibernate除了作为ORM框架之外，它也是一种JPA实现</li>
+<li>从功能上来说，JPA是Hibernate功能的子集</li>
+</ol>
+<h3 id="3-JPA的供应商"><a href="#3-JPA的供应商" class="headerlink" title="3.JPA的供应商"></a>3.JPA的供应商</h3><p>JPA的目标之一是制定一个可以由很多供应商实现的API，Hibernate3.2+、TopLink 10.1+以及OpenJPA都提供了JPA的实现，JPA的供应商有很多，常见以下四种：</p>
+<ol>
+<li>Hibernate<br>JPA的始作俑者就是Hibernate的作者，Hibernate从3.2开始兼容JPA</li>
+<li>OpenJPA<br>OpenJPA是Apache组织提供的开源项目</li>
+<li>TopLink</li>
+<li>EclipseLink</li>
+</ol>
+<h3 id="4-JPA的优势"><a href="#4-JPA的优势" class="headerlink" title="4.JPA的优势"></a>4.JPA的优势</h3><ol>
+<li>标准化：提供相同的API，这保证了基于JAP开发的企业应用能够经过少量的修改就能在不用的JPA框架下运行。</li>
+<li>简单易容，集成方便：JPA的主要目标之一就是提供更加简单的编程模型，在JPA框架下创建实体和创建Java类一样简单，只需要使用 javax.persistence.Entity 进行注解；JPA的框架和接口也都非常简单。</li>
+<li>可媲美JDBC的查询能力：JPA的查询语言是面向对象的，JPA定义了独特的JPQL，而且能够支持批量更新和修改、JOIN、GROUP BY、HAVING等通常只有SQL才能提供的高级查询特性，甚至还能支持子查询。</li>
+<li>支持面向对象的高级特性：JPA中能够支持面向对象的高级特性，如类之间的复杂关系、最大限度的使用面向对象的模型。</li>
+</ol>
+<h3 id="5-Spring-Data"><a href="#5-Spring-Data" class="headerlink" title="5.Spring Data"></a>5.Spring Data</h3><p>Spring Data是Spring的一个子项目。用于简化数据库访问，支持NoSQL和关系型数据库。主要目标是使数据库的访问变得快捷。Spring Data具有如下特点：</p>
+<p>1.SpringData项目支持NoSQL存储：</p>
+<p>​    MongoDB（文档数据库）</p>
+<p>​    Neo4j（图形数据库）</p>
+<p>​    Redis（键/值存储）</p>
+<p>​    Hbase（列族数据库）</p>
+<p>2.SpringData项目所支持的关系型数据存储技术</p>
+<p>​    JDBC</p>
+<p>​    JPA</p>
+
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/02/Spring-Data-JPA/" data-id="ck6yiyo550008kgv4gz6seznw"
+        class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-SpringBoot日志" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -109,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/" data-id="ck61s6iiq00027gv42qxxd0me"
+      <a data-url="http://yoursite.com/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/" data-id="ck6yiyo440005kgv41up3bnpv"
         class="article-share-link">分享</a>
       
     </footer>
@@ -175,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/29/Thymeleaf/" data-id="ck61s6ik000057gv427565lbf"
+      <a data-url="http://yoursite.com/2020/01/29/Thymeleaf/" data-id="ck6yiyo4i0006kgv45ac09af3"
         class="article-share-link">分享</a>
       
     </footer>
@@ -242,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/26/Docker/" data-id="ck61s6iio00017gv45q2wdhkl"
+      <a data-url="http://yoursite.com/2020/01/26/Docker/" data-id="ck6yiyo3l0004kgv42fi58mdm"
         class="article-share-link">分享</a>
       
     </footer>
@@ -313,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/25/About%20Me/" data-id="ck61s6iii00007gv42sb7edlp"
+      <a data-url="http://yoursite.com/2020/01/25/About%20Me/" data-id="ck6yiyo2r0000kgv4aftf6y6i"
         class="article-share-link">分享</a>
       
     </footer>
@@ -384,7 +548,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/24/%E8%87%AA%E5%AE%9A%E4%B9%89SpringBoot%E5%90%AF%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%9B%BE%E6%A0%87/" data-id="ck61s6ik200067gv41gsodhqq"
+      <a data-url="http://yoursite.com/2020/01/24/%E8%87%AA%E5%AE%9A%E4%B9%89SpringBoot%E5%90%AF%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%9B%BE%E6%A0%87/" data-id="ck6yiyo4k0007kgv4egkf1s35"
         class="article-share-link">分享</a>
       
     </footer>
@@ -446,7 +610,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/24/Eureka-server%E9%85%8D%E7%BD%AEservlet.context-path%E5%90%8E%E5%AF%BC%E8%87%B4Eureka-client%E6%B3%A8%E5%86%8C%E5%88%B0server%E9%97%AE%E9%A2%98/" data-id="ck61s6iiu00047gv4bqnk5p76"
+      <a data-url="http://yoursite.com/2020/01/24/Eureka-server%E9%85%8D%E7%BD%AEservlet.context-path%E5%90%8E%E5%AF%BC%E8%87%B4Eureka-client%E6%B3%A8%E5%86%8C%E5%88%B0server%E9%97%AE%E9%A2%98/" data-id="ck6yiyo3f0001kgv4df0087ip"
         class="article-share-link">分享</a>
       
     </footer>
@@ -508,7 +672,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/24/%E5%9D%9A%E6%8C%81%EF%BC%8C%E9%82%A3%E4%B8%80%E5%AE%9A%E5%BE%88%E9%85%B7%E5%90%A7/" data-id="ck61s6iit00037gv47yn3cqln"
+      <a data-url="http://yoursite.com/2020/01/24/%E5%9D%9A%E6%8C%81%EF%BC%8C%E9%82%A3%E4%B8%80%E5%AE%9A%E5%BE%88%E9%85%B7%E5%90%A7/" data-id="ck6yiyo3i0003kgv45xy45h9v"
         class="article-share-link">分享</a>
       
     </footer>

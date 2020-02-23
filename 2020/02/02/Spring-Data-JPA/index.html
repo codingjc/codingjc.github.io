@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    坚持，那一定很酷吧 |  Codingjc&#39;s Blog
+    Spring Data JPA |  Codingjc&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -31,7 +31,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-坚持，那一定很酷吧" class="article article-type-post" itemscope
+  <article id="post-Spring-Data-JPA" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -39,7 +39,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  坚持，那一定很酷吧
+  Spring Data JPA
 </h1>
   
 
@@ -48,8 +48,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/01/24/%E5%9D%9A%E6%8C%81%EF%BC%8C%E9%82%A3%E4%B8%80%E5%AE%9A%E5%BE%88%E9%85%B7%E5%90%A7/" class="article-date">
-  <time datetime="2020-01-24T15:25:27.896Z" itemprop="datePublished">2020-01-24</time>
+      <a href="/2020/02/02/Spring-Data-JPA/" class="article-date">
+  <time datetime="2020-02-02T03:13:33.000Z" itemprop="datePublished">2020-02-02</time>
 </a>
       
       
@@ -59,7 +59,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">91字</span>
+            <span class="post-count">621字</span>
         </span>
     </span>
 
@@ -68,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -94,7 +94,42 @@
       
 
       
-      <h3 id="坚持，那一定很酷吧"><a href="#坚持，那一定很酷吧" class="headerlink" title="坚持，那一定很酷吧"></a>坚持，那一定很酷吧</h3><h4 id="Hello，大家好，我是codingjc，在21世纪的10年代的最后一个冬天，开启我的博客之路，今后每周都会发布一篇博客用来分享技术或讨论那些年走过的坑-。-或者可以讨论生活工作中的趣事，来记录分享生活中的点滴。"><a href="#Hello，大家好，我是codingjc，在21世纪的10年代的最后一个冬天，开启我的博客之路，今后每周都会发布一篇博客用来分享技术或讨论那些年走过的坑-。-或者可以讨论生活工作中的趣事，来记录分享生活中的点滴。" class="headerlink" title="Hello，大家好，我是codingjc，在21世纪的10年代的最后一个冬天，开启我的博客之路，今后每周都会发布一篇博客用来分享技术或讨论那些年走过的坑-。=或者可以讨论生活工作中的趣事，来记录分享生活中的点滴。"></a>Hello，大家好，我是codingjc，在21世纪的10年代的最后一个冬天，开启我的博客之路，今后每周都会发布一篇博客用来分享技术或讨论那些年走过的坑-。=或者可以讨论生活工作中的趣事，来记录分享生活中的点滴。</h4><p>Peace~</p>
+      <h2 id="Jpa"><a href="#Jpa" class="headerlink" title="Jpa"></a>Jpa</h2><blockquote>
+<p>JPA是一种规范，需要由具体的实现，体现了面向接口的特性。</p>
+</blockquote>
+<h3 id="1-JPA是什么"><a href="#1-JPA是什么" class="headerlink" title="1.JPA是什么"></a>1.JPA是什么</h3><ol>
+<li>Java Persistence API：用于对象持久化的API</li>
+<li>Java EE 5.0 平台标准的ORM规范，使得应用程序徐以统一的方式访问持久层</li>
+</ol>
+<p><img src="/2020/02/02/Spring-Data-JPA/.%5CSpring-Data-JPA%5C1217603-20190627093955399-1814244419.png" alt></p>
+<h3 id="2-JPA和Hibernate的关系"><a href="#2-JPA和Hibernate的关系" class="headerlink" title="2.JPA和Hibernate的关系"></a>2.JPA和Hibernate的关系</h3><ol>
+<li>JPA是Hibernate的一个抽象（就像JDBC和JDBC驱动的关系）</li>
+<li>JPA是规范：JPA本质上就是一种ORM规范，不是ORM框架。这因为JPA并未提供ORM实现，他只是制定了一些规范，提供了一些编程的API接口，但具体的实现是由ORM厂商实现的。</li>
+<li>Hibernate是实现：Hibernate除了作为ORM框架之外，它也是一种JPA实现</li>
+<li>从功能上来说，JPA是Hibernate功能的子集</li>
+</ol>
+<h3 id="3-JPA的供应商"><a href="#3-JPA的供应商" class="headerlink" title="3.JPA的供应商"></a>3.JPA的供应商</h3><p>JPA的目标之一是制定一个可以由很多供应商实现的API，Hibernate3.2+、TopLink 10.1+以及OpenJPA都提供了JPA的实现，JPA的供应商有很多，常见以下四种：</p>
+<ol>
+<li>Hibernate<br>JPA的始作俑者就是Hibernate的作者，Hibernate从3.2开始兼容JPA</li>
+<li>OpenJPA<br>OpenJPA是Apache组织提供的开源项目</li>
+<li>TopLink</li>
+<li>EclipseLink</li>
+</ol>
+<h3 id="4-JPA的优势"><a href="#4-JPA的优势" class="headerlink" title="4.JPA的优势"></a>4.JPA的优势</h3><ol>
+<li>标准化：提供相同的API，这保证了基于JAP开发的企业应用能够经过少量的修改就能在不用的JPA框架下运行。</li>
+<li>简单易容，集成方便：JPA的主要目标之一就是提供更加简单的编程模型，在JPA框架下创建实体和创建Java类一样简单，只需要使用 javax.persistence.Entity 进行注解；JPA的框架和接口也都非常简单。</li>
+<li>可媲美JDBC的查询能力：JPA的查询语言是面向对象的，JPA定义了独特的JPQL，而且能够支持批量更新和修改、JOIN、GROUP BY、HAVING等通常只有SQL才能提供的高级查询特性，甚至还能支持子查询。</li>
+<li>支持面向对象的高级特性：JPA中能够支持面向对象的高级特性，如类之间的复杂关系、最大限度的使用面向对象的模型。</li>
+</ol>
+<h3 id="5-Spring-Data"><a href="#5-Spring-Data" class="headerlink" title="5.Spring Data"></a>5.Spring Data</h3><p>Spring Data是Spring的一个子项目。用于简化数据库访问，支持NoSQL和关系型数据库。主要目标是使数据库的访问变得快捷。Spring Data具有如下特点：</p>
+<p>1.SpringData项目支持NoSQL存储：</p>
+<p>​    MongoDB（文档数据库）</p>
+<p>​    Neo4j（图形数据库）</p>
+<p>​    Redis（键/值存储）</p>
+<p>​    Hbase（列族数据库）</p>
+<p>2.SpringData项目所支持的关系型数据存储技术</p>
+<p>​    JDBC</p>
+<p>​    JPA</p>
 
       
       <!-- 打赏 -->
@@ -105,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/24/%E5%9D%9A%E6%8C%81%EF%BC%8C%E9%82%A3%E4%B8%80%E5%AE%9A%E5%BE%88%E9%85%B7%E5%90%A7/" data-id="ck6yiyo3i0003kgv45xy45h9v"
+      <a data-url="http://yoursite.com/2020/02/02/Spring-Data-JPA/" data-id="ck6yiyo550008kgv4gz6seznw"
         class="article-share-link">分享</a>
       
     </footer>
@@ -116,15 +151,20 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/01/24/Eureka-server%E9%85%8D%E7%BD%AEservlet.context-path%E5%90%8E%E5%AF%BC%E8%87%B4Eureka-client%E6%B3%A8%E5%86%8C%E5%88%B0server%E9%97%AE%E9%A2%98/" class="article-nav-link">
+      <a href="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Eureka-server配置servlet.context-path后导致Eureka-client注册到server问题
+            &#39;SpringBoot部署&#39;
           
         </div>
       </a>
     
+    
+      <a href="/2020/01/29/SpringBoot%E6%97%A5%E5%BF%97/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">SpringBoot日志</div>
+      </a>
     
   </nav>
 
