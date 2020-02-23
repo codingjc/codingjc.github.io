@@ -97,7 +97,8 @@
       <h2 id="SpringBoot部署"><a href="#SpringBoot部署" class="headerlink" title="SpringBoot部署"></a>SpringBoot部署</h2><blockquote>
 <p>把SpringBoot项目打包为镜像，通过docker来创建容器并运行</p>
 </blockquote>
-<p><img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/1.png" alt></p>
+<img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/1.png" class title="这是说明">
+
 <a id="more"></a>
 
 <h3 id="一、手动部署"><a href="#一、手动部署" class="headerlink" title="一、手动部署"></a>一、手动部署</h3><h4 id="1-打包镜像"><a href="#1-打包镜像" class="headerlink" title="1.打包镜像"></a>1.打包镜像</h4><p>将SpringBoot项目通过Maven或Gradle打包为jar，通过编写Dockerfile文件来讲jar制作为image。</p>
@@ -108,19 +109,24 @@
 <h4 id="2-制作镜像"><a href="#2-制作镜像" class="headerlink" title="2.制作镜像"></a>2.制作镜像</h4><p>将jar包和Dockerfile文件上传至环境，放在/home/docker目录下，然后执行打镜像命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 制作镜像</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">docker build -t xxx .</span></pre></td></tr></table></figure>
 
-<p><img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/.%5CSpringBoot%E9%83%A8%E7%BD%B2%5C20200223110613.png" alt></p>
+<img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/20200223110613.png" class title="这是说明">
+
 <h4 id="3-创建容器并启动"><a href="#3-创建容器并启动" class="headerlink" title="3.创建容器并启动"></a>3.创建容器并启动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -id:创建并后台运行</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> --name:容器名称</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -p:端口映射</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">docker run -id --name xxx  -p 8081:8081 xxx</span></pre></td></tr></table></figure>
 
 
 
 <h3 id="二、整合IDEA"><a href="#二、整合IDEA" class="headerlink" title="二、整合IDEA"></a>二、整合IDEA</h3><h4 id="1-开放docker端口"><a href="#1-开放docker端口" class="headerlink" title="1.开放docker端口"></a>1.开放docker端口</h4><p>进入到 /usr/lib/systemd/system/docker.service 配置文件中</p>
 <p>在ExecStart=/usr/bin/dockerd-current 后插入 -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock</p>
-<p><img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/E:%5C%E5%8D%9A%E5%AE%A2%5Cblog%5Csource_posts%5CSpringBoot%E9%83%A8%E7%BD%B2%5C20200223113302.png" alt></p>
+<img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/20200223113302.png" class title="这是说明">
+
+
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 重新加载配置文件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 重启docker</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span></pre></td></tr></table></figure>
 
 <h4 id="2-开放防火墙端口"><a href="#2-开放防火墙端口" class="headerlink" title="2.开放防火墙端口"></a>2.开放防火墙端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 开启端口</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=2375/tcp --permanent</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">重启防火墙</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span></pre></td></tr></table></figure>
 
-<h4 id="3-IDEA连接docker"><a href="#3-IDEA连接docker" class="headerlink" title="3.IDEA连接docker"></a>3.IDEA连接docker</h4><p><img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/.%5CSpringBoot%E9%83%A8%E7%BD%B2%5C20200223115456.png" alt></p>
+<h4 id="3-IDEA连接docker"><a href="#3-IDEA连接docker" class="headerlink" title="3.IDEA连接docker"></a>3.IDEA连接docker</h4><img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/20200223115456.png" class title="这是说明">
+
+
 <p>修改pom</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">&lt;!--docker镜像的前缀--&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="tag">&lt;<span class="name">docker.image.prefix</span>&gt;</span>codingjc<span class="tag">&lt;/<span class="name">docker.image.prefix</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span></pre></td></tr></table></figure>
 
@@ -128,9 +134,12 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">                    <span class="tag">&lt;<span class="name">dockerHost</span>&gt;</span>http://192.168.0.103:2375<span class="tag">&lt;/<span class="name">dockerHost</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">                    <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">                    <span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span>src/main/docker<span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">                        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                            <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">                            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">                            <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">                        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">                    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span></pre></td></tr></table></figure>
 
 <p>复制Dockerfile到:src/main/docker中</p>
-<p><img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/.%5CSpringBoot%E9%83%A8%E7%BD%B2%5C20200223115847.png" alt></p>
+<img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/20200223115847.png" class title="这是说明">
+
+
 <p>执行清理，打包</p>
-<p><img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/.%5CSpringBoot%E9%83%A8%E7%BD%B2%5C20200223120114.png" alt></p>
+<img src="/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/20200223120114.png" class title="这是说明">
+
 <p>tips：由于项目中连接的MySQL也是在docker容器中，因此在datasource.url中需要添加的是mysql容器的内部Ip，端口也是容器内部的port</p>
 <p>查看容器内部ip</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">docker network inspect bridge</span></pre></td></tr></table></figure>
@@ -145,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/" data-id="ck6yj2g0c0004mov46135gfqb"
+      <a data-url="http://yoursite.com/2020/02/23/SpringBoot%E9%83%A8%E7%BD%B2/" data-id="ck6ykmrml0004rwv4g04bh8jd"
         class="article-share-link">分享</a>
       
     </footer>
@@ -157,9 +166,9 @@
   <nav class="article-nav">
     
     
-      <a href="/2020/02/02/Spring-Data-JPA/" class="article-nav-link">
+      <a href="/2020/02/02/SpringDataJPA/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Spring Data JPA</div>
+        <div class="article-nav-title">SpringDataJPA</div>
       </a>
     
   </nav>
